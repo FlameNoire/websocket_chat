@@ -31,12 +31,15 @@ window.onload = function() {
         // Send the message through the WebSocket.
         socket.send(message);
 
-        // Add the message to the messages list.
-        messagesList.innerHTML += '<li class="sent"><span>Sent:</span>' + message +
-            '</li>';
+        //Check connection state
+        if(socket.readyState === 1) {
+            // Add the message to the messages list.
+            messagesList.innerHTML += '<li class="sent"><span>Sent:</span>' + message +
+                '</li>';
 
-        // Clear out the message field.
-        messageField.value = '';
+            // Clear out the message field.
+            messageField.value = '';
+        }
 
         return false;
     };
